@@ -13,5 +13,8 @@ module.exports = {
   root: true,
   rules: {
     'prettier/prettier': 2,
+  },
+  parserOptions: {
+    warnOnUnsupportedTypeScriptVersion: false
   }
 };
