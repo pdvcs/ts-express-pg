@@ -1,5 +1,5 @@
 import { Result, Ok, Err } from './common/result'
-import { Pool, QueryResult, DatabaseError } from 'pg'
+import { Pool, DatabaseError } from 'pg'
 
 const dbpool = new Pool({
   host: 'localhost',
@@ -13,7 +13,7 @@ const dbpool = new Pool({
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function sqlquery(sql: string, params: any[] = []): Promise<Result<any[], string>> {
   try {
-    const r: QueryResult = await dbpool.query(sql, params)
+    const r = await dbpool.query(sql, params)
     return Ok(r.rows)
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
